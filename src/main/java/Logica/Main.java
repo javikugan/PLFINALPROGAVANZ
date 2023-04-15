@@ -18,6 +18,7 @@ public class Main {
             if (i%3 == 0 && i !=0){
                 HormigaSoldado os = new HormigaSoldado(i,c);
                 HormigaCria oc = new HormigaCria(i,c);
+                os.run();
                 oc.run();
             }else{
                 HormigaObrera oo = new HormigaObrera(i,c);
