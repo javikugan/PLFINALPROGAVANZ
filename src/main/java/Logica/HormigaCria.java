@@ -9,11 +9,17 @@ package Logica;
  * @author javik
  */
 public class HormigaCria extends Hormiga{
-    private Util util;
+    private Invasion i;
+    private Pausa p;
     
-    public HormigaCria(int idHormiga, Colonia c) {
+    public HormigaCria(int idHormiga, Colonia c, Invasion inv,Pausa pausa) {
         super(idHormiga, c);
         setNombre(("HC" + idHormiga));
+        this.i = inv;
+        this.p = pausa;
+        setTipo("Cria");
+
+        
     }
     
     @Override
@@ -22,16 +28,17 @@ public class HormigaCria extends Hormiga{
         Colonia c = getColonia();
         c.entrarColonia(this);
         while(true){
-            //try{
-            c.comer(util.intAleat(300,500), this);
-            c.descansar(400, this);
+            
+                p.mirar();
+                i.mirar(this);
+                c.comer(Util.intAleat(300,500), this);
+                c.descansar(400, this);
+            
         
            
                 
             
-        /*}catch(InterruptedException e){
-            throw new RuntimeException(e);
-        } */ 
+        
         }
     } 
 

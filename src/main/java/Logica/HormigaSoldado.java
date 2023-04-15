@@ -9,10 +9,15 @@ package Logica;
  * @author javik
  */
 public class HormigaSoldado extends Hormiga {
-    
-    public HormigaSoldado(int idHormiga, Colonia c) {
+    private Invasion i;
+    private Pausa p;
+    public HormigaSoldado(int idHormiga, Colonia c, Invasion inv,Pausa pausa) {
         super(idHormiga, c);
         setNombre(("HS" + idHormiga));
+        this.i = inv;        
+        this.p = pausa;
+        setTipo("Soldado");
+
     }
     
     @Override
@@ -22,14 +27,14 @@ public class HormigaSoldado extends Hormiga {
         System.out.println("La Hormiga" + getNombre() + " Ha Aparecido");
 
         while(true){
-            //try{
-                for(int i = 0; i<=10; i++){
+            
+                for(int k = 0; k<=10; k++){
+                    p.mirar();
+                    i.mirar(this);
                     c.entrenamiento(this);
                     c.descansar(200, this);
                 }
-            /*}catch(InterruptedException e){
-                throw new RuntimeException(e);
-            }*/
+            
         }
     } 
 

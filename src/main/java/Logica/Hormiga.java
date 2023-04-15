@@ -13,8 +13,8 @@ public class Hormiga extends Thread {
     private int inventarioHormiga;
     private String nombre;
     private Colonia c;
-    
-    
+    private String tipo;
+    private Pausa pausa;
     
     
     public String getNombre(){
@@ -46,6 +46,22 @@ public class Hormiga extends Thread {
 
     public void setInventarioHormiga(int inventarioHormiga) {
         this.inventarioHormiga = inventarioHormiga;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Pausa getP() {
+        return pausa;
+    }
+
+    public void setP(Pausa p) {
+        this.pausa = p;
     }
     
     

@@ -10,10 +10,14 @@ package Logica;
  * @author javik
  */
 public class HormigaObrera extends Hormiga {
+    private Pausa p;
 
-    public HormigaObrera(int idHormiga, Colonia c) {
-        super(idHormiga, c);
+    public HormigaObrera(int idHormiga, Colonia c,Pausa pausa) {
+        super(idHormiga, c,pausa);
         setNombre(("HO" + idHormiga));
+        setTipo("Obrera");
+        
+
     }
 
     
@@ -24,7 +28,6 @@ public class HormigaObrera extends Hormiga {
         System.out.println("La Hormiga" + getNombre() + " Ha Aparecido");
         while(true){
             try{
-                
                 for(int i = 0; i<=10; i++){
                     if ((getIdhormiga()%2)==0){
                         c.salirColonia(this);
@@ -36,12 +39,11 @@ public class HormigaObrera extends Hormiga {
                         c.reponerComedor(this);
                     }
                 }
+                
                 c.comer(300,this);
                 c.descansar(100,this);
 
-            }catch(InterruptedException e){
-                throw new RuntimeException(e);
-            }  
+            }catch(InterruptedException e){}  
         
     } 
 }
