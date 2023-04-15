@@ -9,5 +9,5 @@ Cada hormiga obrera, con un identificador **par**, se encargará de ir sirviendo
 	• Entonces, viaja hacia la ZONA PARA COMER, tardando un tiempo aleatorio de entre 1 y 3 segundos.
 	• A continuación, accede a la ZONA PARA COMER y deposita el elemento de comida, consumiendo entre 1 y 2 segundos. Desde este momento, elemento de comida está disponible para ser ingerido por cualquier hormiga de la colonia. 
 Otras consideraciones:
-	• Todas las hormigas obreras, pares o impares, tras realizar 10 iteraciones completas de su acción principal, pasan por la ZONA PARA COMER para reponer fuerzas y comer, consumiendo 1 unidad de alimento y tardando 3 segundos.
+	- [ ] • Todas las hormigas obreras, pares o impares, tras realizar 10 iteraciones completas de su acción principal, pasan por la ZONA PARA COMER para reponer fuerzas y comer, consumiendo 1 unidad de alimento y tardando 3 segundos.
 	• A continuación, acceden a la ZONA DE DESCANSO, consumiendo allí 1 segundo, para, a continuación, volver a retomar su actividad habitual.

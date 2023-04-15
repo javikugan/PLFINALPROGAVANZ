@@ -14,7 +14,6 @@ import java.lang.Thread;
  * @author javik
  */
 public class Colonia {
-    private Util util;
     private int comidaAlmacen;
     private int comidaComedor;
     private ReentrantLock lockEntrada = new ReentrantLock();
@@ -29,7 +28,7 @@ public class Colonia {
         while(rep){
             if(lockEntrada.tryLock()){
                 try{
-                    System.out.println("La Hormiga" + h.getNombre() + " Ha Entrado En La Colonia");
+                    //System.out.println("La Hormiga" + h.getNombre() + " Ha Entrado En La Colonia");
                     Thread.sleep(100);
                 }
                 catch(InterruptedException e){
@@ -46,7 +45,7 @@ public class Colonia {
         try{
             semSalida.acquire();
             Thread.sleep(100);
-            System.out.println("La Hormiga" + h.getNombre() + " Ha Entrado En La Colonia");
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Salido De La Colonia");
             semSalida.release();
 
         }
@@ -58,9 +57,13 @@ public class Colonia {
         try{
             aforoAlmacen.acquire();
             semComidaAlm.acquire();
-            Thread.sleep(util.intAleat(200, 400));
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Entrado En El Almacen");
+            Thread.sleep(Util.intAleat(200, 400));
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Repuesto El Almacen");
             comidaAlmacen += 5;
             semComidaAlm.release();           
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Salido Del Almacen");
+
         }catch(InterruptedException e){
             throw new RuntimeException(e);
             }
@@ -70,13 +73,17 @@ public class Colonia {
         try{
             aforoAlmacen.acquire();
             semComidaAlm.acquire();
-            Thread.sleep(util.intAleat(100, 200));
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Entrado En El Almacen");
+            Thread.sleep(Util.intAleat(100, 200));
             comidaAlmacen -= 5;
             semComidaAlm.release();
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Cogido Comida Del Almacen");
             aforoAlmacen.release();
-            Thread.sleep(util.intAleat(100,300));
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Salido Del Almacen");
+            Thread.sleep(Util.intAleat(100,300));
             semComidaCom.acquire();
-            Thread.sleep(util.intAleat(100, 200));
+            Thread.sleep(Util.intAleat(100, 200));
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Dejado comida en el comedor");
             comidaComedor +=5;
             semComidaCom.release();            
         }catch(InterruptedException e){
@@ -84,8 +91,10 @@ public class Colonia {
             }   
     }
     public void descansar(int tiempo, Hormiga h){
-        try{
-             Thread.sleep(tiempo);         
+        try{            
+            //System.out.println("La Hormiga" + h.getNombre() + " Está Descansando");
+            Thread.sleep(tiempo);
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Terminado De Descansar");
         }catch(InterruptedException e){
             throw new RuntimeException(e);
             } 
@@ -95,14 +104,18 @@ public class Colonia {
             semComidaCom.acquire();
             comidaComedor --;
             semComidaCom.release();
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Empezado a Comer");
             Thread.sleep(tiempo);
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Terminado De Comer");
         }catch(InterruptedException e){
             throw new RuntimeException(e);
             } 
     }
     public void entrenamiento(Hormiga h){
         try{
-            Thread.sleep(util.intAleat(200,800));
+            //System.out.println("La Hormiga" + h.getNombre() + " Está Entrenando");
+            Thread.sleep(Util.intAleat(200,800));
+            //System.out.println("La Hormiga" + h.getNombre() + " Ha Terminado de Entrenar");
                 }catch(InterruptedException e){
                     throw new RuntimeException(e);
                     } 
