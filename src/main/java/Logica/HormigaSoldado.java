@@ -12,7 +12,7 @@ public class HormigaSoldado extends Hormiga {
     private Invasion i;
     private Pausa p;
     public HormigaSoldado(int idHormiga, Colonia c, Invasion inv,Pausa pausa) {
-        super(idHormiga, c);
+        super(idHormiga, c, pausa);
         setNombre(("HS" + idHormiga));
         this.i = inv;        
         this.p = pausa;

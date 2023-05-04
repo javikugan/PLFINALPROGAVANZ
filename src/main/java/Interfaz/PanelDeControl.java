@@ -1,12 +1,14 @@
 package Interfaz;
 
 import Logica.Colonia;
+import Logica.Generador;
 import Logica.HormigaCria;
 import Logica.HormigaObrera;
 import Logica.HormigaSoldado;
 import Logica.ListaThreads;
 import Logica.Invasion;
 import Logica.Pausa;
+
 
 public class PanelDeControl extends javax.swing.JFrame
 {
@@ -22,22 +24,8 @@ public class PanelDeControl extends javax.swing.JFrame
         initComponents();
         Colonia c = new Colonia(jexterior,jcolonia,jalmacen, jrefugio,jsalaDescanso,jsalaEntrenamiento,jcomedor,jresistencia);
         ListaThreads ext = c.getExterior();
-
-        for(int k= 1; k<=10; k++){
-            if (k%3 == 0 && k !=0){
-                HormigaSoldado os = new HormigaSoldado(k,c,i,p);
-                HormigaCria oc = new HormigaCria(k,c,i,p);
-                ext.meter(oc);
-                ext.meter(os);
-                os.start();
-                oc.start();
-            }else{
-                HormigaObrera oo = new HormigaObrera(k,c,p);
-                ext.meter(oo);
-                oo.start();
-            }
-            
-        }
+        Generador generador = new Generador(p,i,c);
+        generador.start();
     }
 
     /** This method is called from within the constructor to

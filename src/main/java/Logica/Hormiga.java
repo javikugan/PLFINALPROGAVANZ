@@ -15,6 +15,23 @@ public class Hormiga extends Thread {
     private Colonia c;
     private String tipo;
     private Pausa pausa;
+
+    public Colonia getC() {
+        return c;
+    }
+
+    public void setC(Colonia c) {
+        this.c = c;
+    }
+
+    public Pausa getPausa() {
+        return pausa;
+    }
+
+    public void setPausa(Pausa pausa) {
+        this.pausa = pausa;
+    }
+    
     
     
     public String getNombre(){
@@ -23,9 +40,10 @@ public class Hormiga extends Thread {
     public void setNombre(String n){
         this.nombre = n;
     }
-    public Hormiga(int idhormiga, Colonia colonia) {
+    public Hormiga(int idhormiga, Colonia colonia, Pausa p) {
         this.idhormiga = idhormiga;
         this.c = colonia;
+        this.pausa = p;
     }
     public Colonia getColonia(){
         return this.c;
