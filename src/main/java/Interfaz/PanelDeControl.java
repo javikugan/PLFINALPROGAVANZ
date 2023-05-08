@@ -22,7 +22,7 @@ public class PanelDeControl extends javax.swing.JFrame
     public PanelDeControl()
     {
         initComponents();
-        Colonia c = new Colonia(jexterior,jcolonia,jalmacen, jrefugio,jsalaDescanso,jsalaEntrenamiento,jcomedor,jresistencia);
+        Colonia c = new Colonia(jexterior,jcolonia,jalmacen, jrefugio,jsalaDescanso,jsalaEntrenamiento,jcomedor,jresistencia,jComAlmacen,jComComedor);
         ListaThreads ext = c.getExterior();
         Generador generador = new Generador(p,i,c);
         generador.start();
@@ -54,6 +54,8 @@ public class PanelDeControl extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jComAlmacen = new javax.swing.JTextField();
+        jComComedor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Colores");
@@ -115,6 +117,19 @@ public class PanelDeControl extends javax.swing.JFrame
 
         jLabel8.setText("SALA DE ENTRENAMIENTO");
 
+        jComAlmacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComAlmacenActionPerformed(evt);
+            }
+        });
+
+        jComComedor.setText("jTextField7");
+        jComComedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComComedorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,7 +162,7 @@ public class PanelDeControl extends javax.swing.JFrame
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(jLabel7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jcolonia, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                     .addComponent(jexterior)
@@ -156,7 +171,9 @@ public class PanelDeControl extends javax.swing.JFrame
                     .addComponent(jrefugio)
                     .addComponent(jsalaDescanso)
                     .addComponent(jsalaEntrenamiento)
-                    .addComponent(jresistencia))
+                    .addComponent(jresistencia)
+                    .addComponent(jComComedor, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComAlmacen, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(148, 148, 148))
         );
         layout.setVerticalGroup(
@@ -194,7 +211,11 @@ public class PanelDeControl extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jresistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jComComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addContainerGap())
         );
@@ -234,6 +255,14 @@ public class PanelDeControl extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_jresistenciaActionPerformed
 
+    private void jComAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComAlmacenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComAlmacenActionPerformed
+
+    private void jComComedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComComedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComComedorActionPerformed
+
     public static void main(String args[])
     {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -245,6 +274,8 @@ public class PanelDeControl extends javax.swing.JFrame
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;
+    private javax.swing.JTextField jComAlmacen;
+    private javax.swing.JTextField jComComedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

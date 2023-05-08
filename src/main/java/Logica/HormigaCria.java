@@ -18,8 +18,6 @@ public class HormigaCria extends Hormiga{
         this.i = inv;
         this.p = pausa;
         setTipo("Cria");
-
-        
     }
     
     @Override

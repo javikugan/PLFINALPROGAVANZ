@@ -21,7 +21,12 @@ public class Colonia {
     private Semaphore semSalida = new Semaphore(2);
     private Semaphore aforoAlmacen = new Semaphore(10);
     private Semaphore semComidaAlm = new Semaphore(1);
+    private Semaphore semAlmVacio = new Semaphore(0);
     private Semaphore semComidaCom = new Semaphore(1);
+    private Semaphore semComVacio = new Semaphore(0);
+
+    JTextField contcomedor;
+    JTextField contalmacen;
     ListaThreads exterior;
     ListaThreads colonia;
     ListaThreads almacen;
@@ -77,7 +82,9 @@ public class Colonia {
             Thread.sleep(Util.intAleat(200, 400));
             System.out.println("La Hormiga" + h.getNombre() + " Ha Repuesto El Almacen");
             comidaAlmacen += 5;
-            semComidaAlm.release();           
+            contalmacen.setText(Integer.toString(comidaAlmacen));
+            semComidaAlm.release();
+            semAlmVacio.release();
             System.out.println("La Hormiga" + h.getNombre() + " Ha Salido Del Almacen");
             almacen.sacar(h);
             aforoAlmacen.release();
@@ -90,12 +97,14 @@ public class Colonia {
         try{            
             h.getPausa().mirar();
             aforoAlmacen.acquire();
-            semComidaAlm.acquire();
             almacen.meter(h);
             System.out.println("La Hormiga" + h.getNombre() + " Ha Entrado En El Almacen");
+            semAlmVacio.acquire();
+            semComidaAlm.acquire();
             h.getPausa().mirar();
             Thread.sleep(Util.intAleat(100, 200));
             comidaAlmacen -= 5;
+            contalmacen.setText(Integer.toString(comidaAlmacen));
             semComidaAlm.release();
             System.out.println("La Hormiga" + h.getNombre() + " Ha Cogido Comida Del Almacen");
             h.getPausa().mirar();
@@ -106,13 +115,16 @@ public class Colonia {
             Thread.sleep(Util.intAleat(100,300));
             comedor.meter(h);
             semComidaCom.acquire();
+  
             h.getPausa().mirar();
             Thread.sleep(Util.intAleat(100, 200));
             System.out.println("La Hormiga" + h.getNombre() + " Ha Dejado comida en el comedor");
             comidaComedor +=5;
+            contcomedor.setText(Integer.toString(comidaComedor));
             h.getPausa().mirar();
             comedor.sacar(h);
             semComidaCom.release();     
+            semComVacio.release();
             aforoAlmacen.release();
         }catch(InterruptedException e){
             throw new RuntimeException(e);
@@ -138,8 +150,10 @@ public class Colonia {
             comedor.meter(h);
             System.out.println("La Hormiga" + h.getNombre() + " Ha Llegado Al Comedor");
             h.getPausa().mirar();
+            semComVacio.acquire();
             semComidaCom.acquire();
             comidaComedor --;
+            contcomedor.setText(Integer.toString(comidaComedor));
             h.getPausa().mirar();
             semComidaCom.release();
             h.getPausa().mirar();
@@ -181,7 +195,9 @@ public class Colonia {
     }
     
 
-    public Colonia(JTextField jexterior, JTextField jcolonia, JTextField jalmacen, JTextField jrefugio, JTextField jsalaDescanso, JTextField jsalaEntrenamiento, JTextField jcomedor, JTextField jresistencia) {
+    public Colonia(JTextField jexterior, JTextField jcolonia, 
+            JTextField jalmacen, JTextField jrefugio, JTextField jsalaDescanso, 
+            JTextField jsalaEntrenamiento, JTextField jcomedor, JTextField jresistencia, JTextField jContAlmacen, JTextField jContComedor) {
         this.exterior = new ListaThreads(jexterior);
         this.colonia = new ListaThreads(jcolonia);
         this.almacen = new ListaThreads(jalmacen);
@@ -190,6 +206,9 @@ public class Colonia {
         this.salaEntrenamiento = new ListaThreads(jsalaEntrenamiento);
         this.comedor = new ListaThreads(jcomedor);
         this.resistencia = new ListaThreads(jresistencia);
+        this.contalmacen = jContAlmacen;
+        this.contcomedor = jContComedor;
+        
     }
     
 }

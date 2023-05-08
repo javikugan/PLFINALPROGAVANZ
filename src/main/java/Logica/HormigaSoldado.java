@@ -34,6 +34,7 @@ public class HormigaSoldado extends Hormiga {
                     c.entrenamiento(this);
                     c.descansar(200, this);
                 }
+                c.comer(3000, this);
             
         }
     } 
