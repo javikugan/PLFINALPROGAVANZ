@@ -12,9 +12,8 @@ package Logica;
 public class HormigaObrera extends Hormiga {
     private Pausa p;
 
-    public HormigaObrera(int idHormiga, Colonia c,Pausa pausa) {
-        super(idHormiga, c,pausa);
-        setNombre(("HO" + idHormiga));
+    public HormigaObrera(String nombre, int idHormiga, Colonia c,Pausa pausa) {
+        super(nombre, idHormiga, c,pausa);
         setTipo("Obrera");
         
 

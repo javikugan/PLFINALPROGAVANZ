@@ -27,7 +27,7 @@ public class Generador extends Thread {
     }
 
     public void run() {
-        
+
         for (int k = 1; k <= 10; k++) {
             try {
                 Thread.sleep(intAleat(800, 3500));
@@ -35,14 +35,14 @@ public class Generador extends Thread {
                 Logger.getLogger(Generador.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (k % 3 == 0 && k != 0) {
-                HormigaSoldado os = new HormigaSoldado(k, c, i, p);
-                HormigaCria oc = new HormigaCria(k, c, i, p);
+                HormigaSoldado os = new HormigaSoldado("HS", k, c, i, p);
+                HormigaCria oc = new HormigaCria("HC", k, c, i, p);
                 exterior.meter(oc);
                 exterior.meter(os);
                 os.start();
                 oc.start();
             } else {
-                HormigaObrera oo = new HormigaObrera(k, c, p);
+                HormigaObrera oo = new HormigaObrera("HO",k, c, p);
                 exterior.meter(oo);
                 oo.start();
             }

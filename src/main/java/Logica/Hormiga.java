@@ -4,11 +4,14 @@
  */
 package Logica;
 
+import static Logica.Util.formatoId;
+
 /**
  *
  * @author javik
  */
 public class Hormiga extends Thread {
+
     private int idhormiga;
     private int inventarioHormiga;
     private String nombre;
@@ -16,12 +19,11 @@ public class Hormiga extends Thread {
     private String tipo;
     private Pausa pausa;
 
-    public Colonia getC() {
-        return c;
-    }
-
-    public void setC(Colonia c) {
-        this.c = c;
+    public Hormiga(String nombre, int idhormiga, Colonia colonia, Pausa p) {
+        this.nombre = ("HC" + formatoId(idhormiga));
+        this.idhormiga = idhormiga;
+        this.c = colonia;
+        this.pausa = p;
     }
 
     public Pausa getPausa() {
@@ -31,23 +33,17 @@ public class Hormiga extends Thread {
     public void setPausa(Pausa pausa) {
         this.pausa = pausa;
     }
-    
-    
-    
-    public String getNombre(){
+
+    public String getNombre() {
         return this.nombre;
     }
-    public void setNombre(String n){
+
+    public void setNombre(String n) {
         this.nombre = n;
     }
-    public Hormiga(int idhormiga, Colonia colonia, Pausa p) {
-        this.idhormiga = idhormiga;
-        this.c = colonia;
-        this.pausa = p;
-    }
-    public Colonia getColonia(){
+
+    public Colonia getColonia() {
         return this.c;
-  
     }
 
     public int getIdhormiga() {
@@ -81,6 +77,5 @@ public class Hormiga extends Thread {
     public void setP(Pausa p) {
         this.pausa = p;
     }
-    
-    
+
 }

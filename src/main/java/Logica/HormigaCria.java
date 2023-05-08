@@ -4,6 +4,7 @@
  */
 package Logica;
 
+
 /**
  *
  * @author javik
@@ -12,9 +13,8 @@ public class HormigaCria extends Hormiga{
     private Invasion i;
     private Pausa p;
     
-    public HormigaCria(int idHormiga, Colonia c, Invasion inv,Pausa pausa) {
-        super(idHormiga, c, pausa);
-        setNombre(("HC" + idHormiga));
+    public HormigaCria(String nombre,int idHormiga, Colonia c, Invasion inv,Pausa pausa) {
+        super(nombre, idHormiga, c, pausa);
         this.i = inv;
         this.p = pausa;
         setTipo("Cria");
@@ -30,15 +30,9 @@ public class HormigaCria extends Hormiga{
                 p.mirar();
                 i.mirar(this);
                 c.comer(Util.intAleat(300,500), this);
-                c.descansar(400, this);
-            
-        
-           
-                
-            
+                c.descansar(400, this);   
         
         }
     } 
-
     
 }

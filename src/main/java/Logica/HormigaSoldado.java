@@ -9,35 +9,34 @@ package Logica;
  * @author javik
  */
 public class HormigaSoldado extends Hormiga {
+
     private Invasion i;
     private Pausa p;
-    public HormigaSoldado(int idHormiga, Colonia c, Invasion inv,Pausa pausa) {
-        super(idHormiga, c, pausa);
-        setNombre(("HS" + idHormiga));
-        this.i = inv;        
+
+    public HormigaSoldado(String nombre, int idHormiga, Colonia c, Invasion inv, Pausa pausa) {
+        super(nombre, idHormiga, c, pausa);
+        this.i = inv;
         this.p = pausa;
         setTipo("Soldado");
-
     }
-    
+
     @Override
-    public void run(){
+    public void run() {
         Colonia c = getColonia();
         c.entrarColonia(this);
         System.out.println("La Hormiga" + getNombre() + " Ha Aparecido");
 
-        while(true){
-            
-                for(int k = 0; k<=10; k++){
-                    p.mirar();
-                    i.mirar(this);
-                    c.entrenamiento(this);
-                    c.descansar(200, this);
-                }
-                c.comer(3000, this);
-            
-        }
-    } 
+        while (true) {
 
-    
+            for (int k = 0; k <= 10; k++) {
+                p.mirar();
+                i.mirar(this);
+                c.entrenamiento(this);
+                c.descansar(200, this);
+            }
+            c.comer(3000, this);
+
+        }
+    }
+
 }

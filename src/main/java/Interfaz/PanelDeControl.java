@@ -227,15 +227,15 @@ public class PanelDeControl extends javax.swing.JFrame
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if(!botonPulsado) //Si no se ha pulsado
         {                 
-            botonPulsado=true;             //lo cambiamos a pulsado
-            jButton5.setText("Reanudar");  //y cambiamos el texto
-            p.cerrar();    //Cerramos el paso para que los pintores se detengan
+            botonPulsado=true;             
+            jButton5.setText("Reanudar");  
+            p.cerrar();    
         }
         else //Si ya se había pulsado
         {                           
-            botonPulsado=false;            //lo cambiamos
-            jButton5.setText("Detener");  //y cambiamos el texto
-            p.abrir();    //Abrimos el paso para que los pintores sigan trabajando
+            botonPulsado=false;           
+            jButton5.setText("Detener");  
+            p.abrir();   
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
